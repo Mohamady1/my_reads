@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
-import Shelves from './components/Shelves';
-import Book from './components/book';
-import Title from './components/title';
+import Shelves from './Shelves';
+import Book from './book';
+import Title from './title';
 import './App.css';
 
 
