@@ -20,18 +20,18 @@ function App() {
   //console.log(allData);
   //console.log(searchBox);
   
-  //fetch API //(constant)
+  //fetch API           //(constant)
   useEffect ( () => {
     BooksAPI.getAll().then(
       (res) => {
        getData(res);
-       setHomepageBooks(createMapOfBooks(res))
+       setHomepageBooks(mapOfBooks(res))
       //console.log(res)
       }
       )
   }, []);
 
-  //check searchpage //(constant)
+  //check searchpage             //(constant)
   useEffect ( () => {
     if (query) {
       BooksAPI.search(query).then(data => {
@@ -52,7 +52,7 @@ function App() {
   }
 
   //to get all books in on homepage
-  function createMapOfBooks  (books)  {
+  function mapOfBooks (books)  {
     const map = new Map();
     books.map(book => map.set(book.title, book))
     return map;
