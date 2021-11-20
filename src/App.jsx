@@ -20,7 +20,7 @@ function App() {
   //console.log(allData);
   //console.log(searchBox);
   
-  //fetch API
+  //fetch API //(constant)
   useEffect ( () => {
     BooksAPI.getAll().then(
       (res) => {
@@ -31,23 +31,21 @@ function App() {
       )
   }, []);
 
-  //check searchpage
+  //check searchpage //(constant)
   useEffect ( () => {
-    let isActive = true
     if (query) {
       BooksAPI.search(query).then(data => {
-          if(isActive) {
+          if(query.length > 1) {
           setSearchBox(data);
           }
       })
     }
-    return () => {
-      isActive = false
-        setSearchBox([])
+    else {
+      setSearchBox([])
     }
   }, [query])
 
-  //what user type in searchpage
+  //what user type in searchpage  //(constant)
   function typing  (e)  {
     setQuery(e.target.value);
     //console.log(query);
@@ -56,7 +54,7 @@ function App() {
   //to get all books in on homepage
   function createMapOfBooks  (books)  {
     const map = new Map();
-    books.map(book => map.set(book.id, book))
+    books.map(book => map.set(book.title, book))
     return map;
   }
 
@@ -71,7 +69,7 @@ function App() {
       
       return bookApi;
     })
-    if (!homepageBooks.has(book.id)) {
+    if (!homepageBooks.has(book.title)) {
       book.shelf = shelf;
       updatedBooks.push(book); //get new book at homepage without refresh
     }
@@ -83,8 +81,8 @@ function App() {
   //merge between searchpage and homepage books by ID
   useEffect ( () => {
     const combined = searchBox.map(book => {
-      if (homepageBooks.has(book.id)) {
-        return homepageBooks.get(book.id)
+      if (homepageBooks.has(book.title)) {
+        return homepageBooks.get(book.title)
       }
       else {
         return book;
