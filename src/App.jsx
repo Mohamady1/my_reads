@@ -80,6 +80,7 @@ function App() {
   
   //merge between searchpage and homepage books by ID
   useEffect ( () => {
+    try {
     const combined = searchBox.map(book => {
       if (homepageBooks.has(book.title)) {
         return homepageBooks.get(book.title)
@@ -89,6 +90,9 @@ function App() {
       }
     })
     setMergedBox(combined);
+    }catch(error){
+      alert("there's no books")
+    }
     // eslint-disable-next-line
   }, [searchBox]);
 
