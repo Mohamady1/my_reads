@@ -30,6 +30,8 @@ function App() {
       }
       )
   }, []);
+  
+  let id = 1;
 
   //check searchpage             //(constant)
   useEffect ( () => {
@@ -122,7 +124,7 @@ return (
             <div className="search-books-results">
               <ol className="books-grid">
                 {mergedBox.map(searchbook => (
-                      <Book key={searchbook.id} book={searchbook} changeShelf={changeShelf} />
+                      <Book key={++id} book={searchbook} changeShelf={changeShelf} />
                   ))}
               </ol>
             </div>
