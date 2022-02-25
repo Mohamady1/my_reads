@@ -10,7 +10,12 @@ function Book ({book, changeShelf}) {
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: book.imageLinks
+                ? `url("${book.imageLinks.thumbnail}")`
+                : `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQZUYP1nWYaAFpSvhTYPwzO91_T6Sbdiysw-juuJQ5daDmBCjKm3oA_oP2toTI4Ni8Y98&usqp=CAU")`,
+
+              backgroundPosition: "center",
+              backgroundSize: "cover", }}></div>
               <div className="book-shelf-changer">
                 <select 
                   value={book.shelf ? book.shelf : "none"} 
