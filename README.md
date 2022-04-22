@@ -18,4 +18,4 @@ author [Omar-Ahmed-Mohamady]
 
 3- you can move books from shelf to other
 
-4- you can search for a book with ur interest and add it to any shelf
+4- you can search for a book with your interest and add it to any shelf
